@@ -13,19 +13,24 @@
 
 
 #import <Foundation/Foundation.h>
+#import "InputCollector.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
        
-        while(true) {
-        char inputChars[255];
-        printf("What would you like to do?\nNew - Create a new contact\nList - list all contacts\nQuit - Exit Application\n>_");
-        fgets(inputChars, 255, stdin);
-        NSString *result = [NSString stringWithCString:inputChars encoding:NSUTF8StringEncoding];
-        NSCharacterSet *charSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-        NSString *parsedString = [result stringByTrimmingCharactersInSet:charSet];
-   
-        
+        InputCollector *inputCollector = [[InputCollector alloc]init];
+        NSString *menu = (@"What would you like to do?\nNew - Create a new contact\nList - list all contacts\nQuit - Exit Application\n>_");
+       
+        BOOL loop = YES;
+        while(loop) {
+            NSString *userInput = [inputCollector inputForPrompt:menu];
+            
+            if ([userInput isEqualToString:@"quit"]) {
+                NSLog(@"Thanks for playing");
+                loop = NO;
+                continue;
+            }
+            
         
         }
         
