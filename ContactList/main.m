@@ -15,13 +15,15 @@
 #import <Foundation/Foundation.h>
 #import "InputCollector.h"
 #import "Contact.h"
+#import "ContactList.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
        
         InputCollector *inputCollector = [[InputCollector alloc]init];
         NSString *menu = (@"What would you like to do?\nnew - Create a new contact\nlist - list all contacts\nquit - Exit Application\n>_");
-        Contact *newContact = [[Contact alloc]init];
+        Contact *firstContact = [[Contact alloc]init];
+        ContactList *contactList = [[ContactList alloc]init];
        
         BOOL loop = YES;
         while(loop) {
@@ -33,9 +35,13 @@ int main(int argc, const char * argv[]) {
                 continue;
             } else if ([userInput isEqualToString:@"new"]) {
                 NSString *name = [inputCollector inputForPrompt:@"Please enter first and last name:"];
-                newContact.name = name;
+                firstContact.name = name;
                 NSString *email = [inputCollector inputForPrompt:@"Please enter your email address:"];
-                newContact.email = email;
+                firstContact.email = email;
+                [contactList addContact:firstContact];
+            } else if ([userInput isEqualToString:@"list"]){
+                [contactList printList];
+            
             }
             
         

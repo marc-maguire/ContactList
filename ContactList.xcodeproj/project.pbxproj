@@ -10,6 +10,7 @@
 		92358ACE1EB919BE00E0EE6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92358ACD1EB919BE00E0EE6D /* main.m */; };
 		92358AD91EB9241800E0EE6D /* InputCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 92358AD81EB9241800E0EE6D /* InputCollector.m */; };
 		92358ADC1EB9293100E0EE6D /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 92358ADB1EB9293100E0EE6D /* Contact.m */; };
+		92358ADF1EB92EE200E0EE6D /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 92358ADE1EB92EE200E0EE6D /* ContactList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		92358AD81EB9241800E0EE6D /* InputCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCollector.m; sourceTree = "<group>"; };
 		92358ADA1EB9293100E0EE6D /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		92358ADB1EB9293100E0EE6D /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		92358ADD1EB92EE200E0EE6D /* ContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactList.h; sourceTree = "<group>"; };
+		92358ADE1EB92EE200E0EE6D /* ContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				92358AD81EB9241800E0EE6D /* InputCollector.m */,
 				92358ADA1EB9293100E0EE6D /* Contact.h */,
 				92358ADB1EB9293100E0EE6D /* Contact.m */,
+				92358ADD1EB92EE200E0EE6D /* ContactList.h */,
+				92358ADE1EB92EE200E0EE6D /* ContactList.m */,
 			);
 			path = ContactList;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92358ADF1EB92EE200E0EE6D /* ContactList.m in Sources */,
 				92358AD91EB9241800E0EE6D /* InputCollector.m in Sources */,
 				92358ADC1EB9293100E0EE6D /* Contact.m in Sources */,
 				92358ACE1EB919BE00E0EE6D /* main.m in Sources */,
