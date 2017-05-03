@@ -39,7 +39,20 @@ int main(int argc, const char * argv[]) {
                 firstContact.name = name;
                 NSString *email = [inputCollector inputForPrompt:@"Please enter your email address:"];
                 firstContact.email = email;
-                [contactList addContact:firstContact];
+                
+                BOOL emailExists = NO;
+                for (Contact *contact in contactList.contactListArray) {
+                    if ([contact.email isEqualToString:firstContact.email]) {
+                        NSLog(@"Contact already exists and cannot be created.");
+                        emailExists = YES;
+                    }
+                }
+                
+                if (!emailExists) {
+                    [contactList addContact:firstContact];
+                }
+                
+                
             } else if ([userInput isEqualToString:@"list"]){
                 [contactList printList];
             } else if ([userInput containsString:@"show "]) {
