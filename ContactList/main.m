@@ -21,8 +21,8 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
        
         InputCollector *inputCollector = [[InputCollector alloc]init];
-        NSString *menu = (@"What would you like to do?\nnew - Create a new contact\nlist - list all contacts\nquit - Exit Application\n>_");
-        Contact *firstContact = [[Contact alloc]init];
+        NSString *menu = (@"What would you like to do?\nnew - Create a new contact\nlist - list all contacts\nquit - Exit Application\nshow <index> - for example: show 1, to show first person in contact list\n>_");
+        
         ContactList *contactList = [[ContactList alloc]init];
        
         BOOL loop = YES;
@@ -34,6 +34,7 @@ int main(int argc, const char * argv[]) {
                 loop = NO;
                 continue;
             } else if ([userInput isEqualToString:@"new"]) {
+                Contact *firstContact = [[Contact alloc]init];
                 NSString *name = [inputCollector inputForPrompt:@"Please enter first and last name:"];
                 firstContact.name = name;
                 NSString *email = [inputCollector inputForPrompt:@"Please enter your email address:"];
@@ -41,7 +42,16 @@ int main(int argc, const char * argv[]) {
                 [contactList addContact:firstContact];
             } else if ([userInput isEqualToString:@"list"]){
                 [contactList printList];
-            
+            } else if ([userInput containsString:@"show "]) {
+                NSArray *components = [userInput componentsSeparatedByString:@" "];
+                NSString *index = components[1];
+                NSInteger intValue = [index integerValue];
+                if (contactList.contactListArray.count > intValue) {
+                    Contact *contact = contactList.contactListArray[intValue];
+                    NSLog(@"%@", contact.name);
+                } else {
+                    NSLog(@"User Not Found");
+                }
             }
             
         
