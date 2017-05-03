@@ -36,10 +36,13 @@ int main(int argc, const char * argv[]) {
             } else if ([userInput isEqualToString:@"new"]) {
                 
                 Contact *firstContact = [[Contact alloc]init];
+                
                 NSString *name = [inputCollector inputForPrompt:@"Please enter first and last name:"];
                 firstContact.name = name;
+                
                 NSString *email = [inputCollector inputForPrompt:@"Please enter your email address:"];
                 firstContact.email = email;
+               
                 NSString *phoneNumber = [inputCollector inputForPrompt:@"Please enter the phone number:"];
                 NSString *typeOfNumber = [inputCollector inputForPrompt:@"What type of phone number is this? (eg. Mobile)"];
                 [firstContact.phoneNumbers setObject:phoneNumber forKey:typeOfNumber];
@@ -67,8 +70,8 @@ int main(int argc, const char * argv[]) {
                 
                 if (contactList.contactListArray.count > intValue) {
                     Contact *contact = contactList.contactListArray[intValue];
-                    NSLog(@"%@\n%@", contact.name, contact.email);
-                    
+                    NSLog(@"Name: %@", contact.name);
+                    NSLog(@"Email: %@", contact.email);
                     for (NSString *key in contact.phoneNumbers) {
                         id value = contact.phoneNumbers[key];
                         NSLog(@"%@: %@", key, value);
