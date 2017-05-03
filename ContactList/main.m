@@ -34,12 +34,18 @@ int main(int argc, const char * argv[]) {
                 loop = NO;
                 continue;
             } else if ([userInput isEqualToString:@"new"]) {
+                
                 Contact *firstContact = [[Contact alloc]init];
                 NSString *name = [inputCollector inputForPrompt:@"Please enter first and last name:"];
                 firstContact.name = name;
                 NSString *email = [inputCollector inputForPrompt:@"Please enter your email address:"];
                 firstContact.email = email;
-                
+                NSString *phoneNumber = [inputCollector inputForPrompt:@"Please enter the phone number:"];
+                NSString *typeOfNumber = [inputCollector inputForPrompt:@"What type of phone number is this? (eg. Mobile)"];
+                [firstContact.phoneNumbers setObject:phoneNumber forKey:typeOfNumber];
+
+               
+                //"Please enter the type of phone number (eg. Mobile):"
                 BOOL emailExists = NO;
                 for (Contact *contact in contactList.contactListArray) {
                     if ([contact.email isEqualToString:firstContact.email]) {
@@ -47,27 +53,36 @@ int main(int argc, const char * argv[]) {
                         emailExists = YES;
                     }
                 }
-                
                 if (!emailExists) {
                     [contactList addContact:firstContact];
                 }
-                
-                
             } else if ([userInput isEqualToString:@"list"]){
                 [contactList printList];
+                
             } else if ([userInput containsString:@"show "]) {
+                
                 NSArray *components = [userInput componentsSeparatedByString:@" "];
                 NSString *index = components[1];
                 NSInteger intValue = [index integerValue];
+                
                 if (contactList.contactListArray.count > intValue) {
                     Contact *contact = contactList.contactListArray[intValue];
-                    NSLog(@"%@", contact.name);
+                    NSLog(@"%@\n%@", contact.name, contact.email);
+                    
+                    for (NSString *key in contact.phoneNumbers) {
+                        id value = contact.phoneNumbers[key];
+                        NSLog(@"%@: %@", key, value);
+                    }
+                  
                 } else {
                     NSLog(@"User Not Found");
                 }
+                
             } else if ([userInput containsString:@"find"]) {
+                
                 NSArray *components = [userInput componentsSeparatedByString:@" "];
                 NSString *index = components[1];
+                
                 for (Contact *searchContact in contactList.contactListArray){
                     if ([searchContact.name isEqualToString:index] || [searchContact.email containsString:index]) {
                         NSLog(@"Search results: name: %@ email: %@",searchContact.name, searchContact.email);

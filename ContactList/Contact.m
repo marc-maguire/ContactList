@@ -10,6 +10,15 @@
 
 @implementation Contact
 
-
+- (instancetype)init {
+    if (self = [super init]) {
+        
+        _name = nil;
+        _email = nil;
+        _phoneNumbers = [[NSMutableDictionary alloc]init];
+        
+    }
+    return self;
+}
 
 @end
