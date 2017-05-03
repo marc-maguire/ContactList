@@ -21,7 +21,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
        
         InputCollector *inputCollector = [[InputCollector alloc]init];
-        NSString *menu = (@"What would you like to do?\nnew - Create a new contact\nlist - list all contacts\nquit - Exit Application\nshow <index> - for example: show 1, to show first person in contact list\n>_");
+        NSString *menu = (@"What would you like to do?\nnew - Create a new contact\nlist - list all contacts\nquit - Exit Application\nshow <index> - to show contact at that position list\nfind name - searches the contact list for said name\n>_");
         
         ContactList *contactList = [[ContactList alloc]init];
        
@@ -51,6 +51,16 @@ int main(int argc, const char * argv[]) {
                     NSLog(@"%@", contact.name);
                 } else {
                     NSLog(@"User Not Found");
+                }
+            } else if ([userInput containsString:@"find"]) {
+                NSArray *components = [userInput componentsSeparatedByString:@" "];
+                NSString *index = components[1];
+                for (Contact *searchContact in contactList.contactListArray){
+                    if ([searchContact.name isEqualToString:index] || [searchContact.email containsString:index]) {
+                        NSLog(@"Search results: name: %@ email: %@",searchContact.name, searchContact.email);
+                    } else {
+                        NSLog(@"Contact not found!");
+                    }
                 }
             }
             

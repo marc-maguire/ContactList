@@ -24,9 +24,9 @@
 
 - (void)printList {
     for (Contact *contact in self.contactListArray) {
-        int index = 1;
-        NSLog(@"#%i <%@>",index,contact.name);
-        index ++;
+        
+        NSLog(@"#%lu <%@>",(unsigned long)[self.contactListArray indexOfObject:contact],contact.name);
+  
     }
 }
 
